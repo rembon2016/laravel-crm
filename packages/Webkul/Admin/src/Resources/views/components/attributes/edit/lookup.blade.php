@@ -216,10 +216,31 @@
 
                     if (this.showPopup) {
                         this.$nextTick(() => this.$refs.searchInput.focus());
+
+                        this.loadInitial();
                     }
                 },
 
+                loadInitial() {
+                    this.isSearching = true;
+
+                    this.$axios.get(this.searchRoute, {
+                            params: { query: '' }
+                        })
+                        .then(response => {
+                            this.searchedResults = response.data;
+                        })
+                        .catch(error => {})
+                        .finally(() => this.isSearching = false);
+                },
+
                 search() {
+                    if (this.searchTerm.length === 0) {
+                        this.loadInitial();
+
+                        return;
+                    }
+
                     if (this.searchTerm.length <= 2) {
                         this.searchedResults = [];
 

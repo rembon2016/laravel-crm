@@ -198,7 +198,7 @@
 
             watch: {
                 searchTerm(newVal, oldVal) {
-                    this.search(this.preload);
+                    this.search(newVal.length === 0 ? true : this.preload);
                 },
             },
 
@@ -226,6 +226,8 @@
 
                     if (this.showPopup) {
                         this.$nextTick(() => this.$refs.searchInput.focus());
+
+                        this.search(true);
                     }
                 },
 

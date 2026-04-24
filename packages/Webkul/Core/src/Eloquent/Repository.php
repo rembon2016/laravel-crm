@@ -40,6 +40,19 @@ abstract class Repository extends BaseRepository implements CacheableInterface
         return $model->first();
     }
 
+    public function findWhere(array $where, $columns = ['*'])
+    {
+        $this->applyCriteria();
+        $this->applyScope();
+
+        $this->applyConditions($where);
+
+        $model = $this->model->get($columns);
+        $this->resetModel();
+
+        return $this->parserResult($model);
+    }
+
     /**
      * Find data by id
      *

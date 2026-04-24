@@ -305,6 +305,8 @@
 
                     if (this.showPopup) {
                         this.$nextTick(() => this.$refs.searchInput?.focus());
+
+                        this.loadInitial();
                     } else {
                         this.isEditing = false;
                     }
@@ -382,12 +384,44 @@
                     this.$emit('on-cancelled', this.inputValue);
                 },
 
+                loadInitial() {
+                    this.isSearching = true;
+
+                    if (this.cancelToken) {
+                        this.cancelToken.cancel();
+                    }
+
+                    this.cancelToken = this.$axios.CancelToken.source();
+
+                    this.$axios.get(this.src, {
+                            params: { query: '' },
+                            cancelToken: this.cancelToken.token,
+                        })
+                        .then(response => {
+                            this.searchedResults = response.data;
+                        })
+                        .catch(error => {
+                            if (! this.$axios.isCancel(error)) {
+                                console.error("Search request failed:", error);
+                            }
+
+                            this.isSearching = false;
+                        })
+                        .finally(() => this.isSearching = false);
+                },
+
                 /**
                  * Initialize the items.
                  *
                  * @return {void}
                  */
                 search() {
+                    if (this.searchTerm.length === 0) {
+                        this.loadInitial();
+
+                        return;
+                    }
+
                     if (this.searchTerm.length <= 2) {
                         this.searchedResults = [];
 
