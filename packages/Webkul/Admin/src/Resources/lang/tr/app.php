@@ -44,6 +44,8 @@ return [
         'import'          => 'İthalat',
         'event'           => 'Etkinlik',
         'campaigns'       => 'Kampanyalar',
+        'warehouses'      => 'Depolar',
+        'inventory'       => 'Envanter',
     ],
     'users' => [
         'activate-warning' => 'Hesabınız henüz etkinleştirilmedi. Lütfen yönetici ile iletişime geçin.',
@@ -1013,14 +1015,15 @@ return [
         'marketing' => [
             'events' => [
                 'index' => [
-                    'create-btn'          => 'Etkinlik Oluştur',
-                    'title'               => 'Etkinlikler',
-                    'create-success'      => 'Etkinlik başarıyla oluşturuldu.',
-                    'update-success'      => 'Etkinlik başarıyla güncellendi.',
-                    'delete-success'      => 'Etkinlik başarıyla silindi.',
-                    'delete-failed'       => 'Etkinlik silinemedi.',
-                    'mass-delete-success' => 'Etkinlikler başarıyla silindi',
-                    'datagrid'            => [
+                    'create-btn'                         => 'Etkinlik Oluştur',
+                    'title'                              => 'Etkinlikler',
+                    'create-success'                     => 'Etkinlik başarıyla oluşturuldu.',
+                    'update-success'                     => 'Etkinlik başarıyla güncellendi.',
+                    'delete-success'                     => 'Etkinlik başarıyla silindi.',
+                    'delete-failed'                      => 'Etkinlik silinemedi.',
+                    'mass-delete-success'                => 'Etkinlikler başarıyla silindi',
+                    'delete-failed-associated-campaigns' => 'Kampanya silinemiyor çünkü mevcut adaylarla ilişkili. Lütfen bu adayları silmeden önce bağlantılarını kaldırın veya güncelleyin.',
+                    'datagrid'                           => [
                         'delete'      => 'Sil',
                         'edit'        => 'Düzenle',
                         'id'          => 'ID',
@@ -1049,6 +1052,7 @@ return [
                     'delete-success'      => 'Kampanya başarıyla silindi.',
                     'delete-failed'       => 'Kampanya silinemedi.',
                     'mass-delete-success' => 'Kampanyalar başarıyla silindi',
+
                     'datagrid'            => [
                         'id'       => 'ID',
                         'name'     => 'Ad',
@@ -2151,6 +2155,8 @@ return [
         'warehouses-info'      => 'CRM’den depoları ekleyin, düzenleyin veya silin',
         'data_transfer'        => 'Veri Transferi',
         'data_transfer_info'   => 'CRM’de kişiler, ürünler ve potansiyel müşterilere ilişkin veri transferi ayarlarını yönetin',
+        'inventory'            => 'Envanter',
+        'inventory-info'       => 'CRM’deki tüm envanter ayarlarını yönetin',
     ],
     'user' => [
         'account' => [

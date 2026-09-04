@@ -44,6 +44,8 @@ return [
         'import'          => 'Import',
         'event'           => 'Event',
         'campaigns'       => 'Campaigns',
+        'warehouses'      => 'Warehouses',
+        'inventory'       => 'Inventory',
     ],
 
     'users' => [
@@ -1116,13 +1118,14 @@ return [
         'marketing' => [
             'events' => [
                 'index' => [
-                    'create-btn'          => 'Create Event',
-                    'title'               => 'Events',
-                    'create-success'      => 'Event created successfully.',
-                    'update-success'      => 'Event updated successfully.',
-                    'delete-success'      => 'Event deleted successfully.',
-                    'delete-failed'       => 'Event can not be deleted.',
-                    'mass-delete-success' => 'Events deleted successfully',
+                    'create-btn'                         => 'Create Event',
+                    'title'                              => 'Events',
+                    'create-success'                     => 'Event created successfully.',
+                    'update-success'                     => 'Event updated successfully.',
+                    'delete-success'                     => 'Event deleted successfully.',
+                    'delete-failed'                      => 'Event can not be deleted.',
+                    'mass-delete-success'                => 'Events deleted successfully',
+                    'delete-failed-associated-campaigns' => 'Event can not be deleted as it is associated with existing campaigns. Please detach or update those campaigns before deletion.',
 
                     'datagrid'   => [
                         'delete'       => 'Delete',
@@ -2351,6 +2354,8 @@ return [
         'warehouses'           => 'Warehouses',
         'warehouse'            => 'Warehouse',
         'warehouses-info'      => 'Add, edit or delete warehouses from CRM',
+        'inventory'            => 'Inventory',
+        'inventory-info'       => 'Manage all your inventory related settings in the CRM',
         'data_transfer'        => 'Data Transfer',
         'data_transfer_info'   => 'Manage persons, products and leads data transfer related settings in the CRM',
     ],

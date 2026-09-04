@@ -4,7 +4,9 @@ namespace Webkul\Admin\DataGrids\Quote;
 
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
+use Webkul\Contact\Repositories\PersonRepository;
 use Webkul\DataGrid\DataGrid;
+use Webkul\User\Repositories\UserRepository;
 
 class QuoteDataGrid extends DataGrid
 {
@@ -65,6 +67,7 @@ class QuoteDataGrid extends DataGrid
             'label'      => trans('admin::app.quotes.index.datagrid.subject'),
             'type'       => 'string',
             'filterable' => true,
+            'searchable' => true,
             'sortable'   => true,
         ]);
 
@@ -73,10 +76,11 @@ class QuoteDataGrid extends DataGrid
             'label'              => trans('admin::app.quotes.index.datagrid.sales-person'),
             'type'               => 'string',
             'sortable'           => true,
+            'searchable'         => true,
             'filterable'         => true,
             'filterable_type'    => 'searchable_dropdown',
             'filterable_options' => [
-                'repository' => \Webkul\User\Repositories\UserRepository::class,
+                'repository' => UserRepository::class,
                 'column'     => [
                     'label' => 'name',
                     'value' => 'name',
@@ -89,10 +93,11 @@ class QuoteDataGrid extends DataGrid
             'label'              => trans('admin::app.quotes.index.datagrid.person'),
             'type'               => 'string',
             'sortable'           => true,
+            'searchable'         => true,
             'filterable'         => true,
             'filterable_type'    => 'searchable_dropdown',
             'filterable_options' => [
-                'repository' => \Webkul\Contact\Repositories\PersonRepository::class,
+                'repository' => PersonRepository::class,
                 'column'     => [
                     'label' => 'name',
                     'value' => 'name',

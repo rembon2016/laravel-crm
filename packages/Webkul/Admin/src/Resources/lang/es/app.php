@@ -44,6 +44,8 @@ return [
         'import'          => 'Importar',
         'event'           => 'Evento',
         'campaigns'       => 'Campañas',
+        'warehouses'      => 'Almacenes',
+        'inventory'       => 'Inventario',
     ],
     'users' => [
         'activate-warning' => 'Tu cuenta aún no está activada. Por favor, contacta al administrador.',
@@ -1013,14 +1015,15 @@ return [
         'marketing' => [
             'events' => [
                 'index' => [
-                    'create-btn'          => 'Crear Evento',
-                    'title'               => 'Eventos',
-                    'create-success'      => 'Evento creado con éxito.',
-                    'update-success'      => 'Evento actualizado con éxito.',
-                    'delete-success'      => 'Evento eliminado con éxito.',
-                    'delete-failed'       => 'No se puede eliminar el evento.',
-                    'mass-delete-success' => 'Eventos eliminados con éxito',
-                    'datagrid'            => [
+                    'create-btn'                         => 'Crear Evento',
+                    'title'                              => 'Eventos',
+                    'create-success'                     => 'Evento creado con éxito.',
+                    'update-success'                     => 'Evento actualizado con éxito.',
+                    'delete-success'                     => 'Evento eliminado con éxito.',
+                    'delete-failed'                      => 'No se puede eliminar el evento.',
+                    'mass-delete-success'                => 'Eventos eliminados con éxito',
+                    'delete-failed-associated-campaigns' => 'No se puede eliminar el evento porque está asociado a campañas existentes. Por favor, desvincúlelas o actualícelas antes de eliminar.',
+                    'datagrid'                           => [
                         'delete'      => 'Eliminar',
                         'edit'        => 'Editar',
                         'id'          => 'ID',
@@ -2149,6 +2152,8 @@ return [
         'warehouses'           => 'Almacenes',
         'warehouse'            => 'Almacén',
         'warehouses-info'      => 'Agregar, editar o eliminar almacenes del CRM',
+        'inventory'            => 'Inventario',
+        'inventory-info'       => 'Gestionar todos los ajustes relacionados con el inventario en el CRM',
         'data_transfer'        => 'Transferencia de Datos',
         'data_transfer_info'   => 'Gestionar la configuración relacionada con la transferencia de datos de personas, productos y clientes potenciales en el CRM',
     ],

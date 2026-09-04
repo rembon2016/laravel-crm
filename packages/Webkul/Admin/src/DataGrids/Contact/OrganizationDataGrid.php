@@ -55,6 +55,7 @@ class OrganizationDataGrid extends DataGrid
             'index'      => 'name',
             'label'      => trans('admin::app.contacts.organizations.index.datagrid.name'),
             'type'       => 'string',
+            'searchable' => true,
             'sortable'   => true,
             'filterable' => true,
         ]);
