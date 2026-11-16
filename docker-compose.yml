@@ -1,10 +1,13 @@
+name: crm
+
 services:
   app:
-    container_name: crm_container
+    container_name: crm_new_container
     restart: unless-stopped
     build:
       context: ./
       dockerfile: ./docker/app.dockerfile
+    image: crm-app
     volumes:
       - ./:/var/www/app
       # Named volume di-seed dari image (composer install / npm build) sehingga
@@ -12,16 +15,18 @@ services:
       - vendor_volume:/var/www/app/vendor
       - build_volume:/var/www/app/public/build
     networks:
-      - NusaraNetwork
+      - CrmNetwork
+      # Network eksternal tempat container MySQL (krayin-mysql) berada.
+      - crm_db
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
   nginx:
-    container_name: crm_nginx
+    container_name: crm_new_nginx
     image: nginx:1.19-alpine
     restart: unless-stopped
     ports:
-      - "${NGINX_PORT_FORWARD:-8600}:80"
+      - "${NGINX_PORT_FORWARD:-8601}:80"
     volumes:
       - ./:/var/www/app
       - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf
@@ -31,11 +36,14 @@ services:
       app:
         condition: service_healthy
     networks:
-      - NusaraNetwork
+      - CrmNetwork
 
 networks:
-  NusaraNetwork:
+  CrmNetwork:
     driver: bridge
+  crm_db:
+    name: crm
+    external: true
 
 volumes:
   vendor_volume:
