@@ -12,7 +12,8 @@ RUN set -ex \
 	&& docker-php-ext-configure gd \
 	--with-freetype \
 	--with-jpeg \
-	--with-webp
+	--with-webp \
+        && docker-php-ext-install intl bcmath 
 
 RUN docker-php-ext-install pdo_pgsql mysqli pdo pdo_mysql gd zip calendar
 

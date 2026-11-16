@@ -60,6 +60,9 @@ return [
             'engine'         => null,
             'options'        => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+                // Naikkan connect timeout dari default OS agar tidak gampang [2002]
+                // Operation timed out saat jaringan ke server DB sedang glitch sesaat.
+                PDO::ATTR_TIMEOUT      => (int) env('DB_TIMEOUT', 30),
             ]) : [],
         ],
 

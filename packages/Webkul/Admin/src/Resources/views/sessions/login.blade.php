@@ -7,9 +7,9 @@
     <div class="flex h-[100vh] flex-col items-center justify-center gap-10">
         <div class="flex flex-col items-center gap-5">
             <!-- Logo -->
-            @if ($logo = core()->getConfigData('general.design.admin_logo.logo_image'))
+            @if ($logo = core()->getConfigData('general.general.admin_logo.logo_image'))
                 <img
-                    class="h-10 w-[110px]"
+                    class="h-15 w-[150px]"
                     src="{{ Storage::url($logo) }}"
                     alt="{{ config('app.name') }}"
                 />
