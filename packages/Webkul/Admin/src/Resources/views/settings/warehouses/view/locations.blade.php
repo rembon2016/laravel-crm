@@ -6,7 +6,7 @@
         type="text/x-template"
         id="v-locations-template"
     >
-        <div class="flex flex-col gap-2 p-4">
+        <div class="flex flex-col gap-2 overflow-x-auto p-4">
             <!-- Location Table -->
             <x-admin::table>
                 <x-admin::table.thead class="rounded-lg border border-gray-200 px-4 py-2 text-sm dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300">

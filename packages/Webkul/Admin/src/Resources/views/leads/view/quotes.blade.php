@@ -10,7 +10,7 @@
         id="v-lead-quotes-template"
     >
         @if (bouncer()->hasPermission('quotes'))
-            <div class="p-3">
+            <div class="overflow-x-auto p-3">
                 {!! view_render_event('admin.leads.view.quotes.table.before', ['lead' => $lead]) !!}
 
                 <x-admin::table v-if="quotes.length">

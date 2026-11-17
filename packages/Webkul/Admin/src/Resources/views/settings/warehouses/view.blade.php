@@ -88,7 +88,7 @@
         {!! view_render_event('admin.settings.warehouses.view.right.before', ['warehouse' => $warehouse]) !!}
         
         <!-- Right Panel -->
-        <div class="flex w-full flex-col gap-4 rounded-lg">
+        <div class="flex w-full min-w-0 flex-col gap-4 rounded-lg">
             {!! view_render_event('admin.settings.warehouses.view.right.attributes.before', ['warehouse' => $warehouse]) !!}
 
             <!-- Activity Navigation -->

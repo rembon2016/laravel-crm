@@ -84,10 +84,13 @@
 
                                 <!-- Activity Details -->
                                 <div
-                                    class="flex w-full justify-between gap-4 rounded-md p-4"
+                                    class="flex w-full min-w-0 justify-between gap-4 rounded-md p-4"
                                     :class="{'bg-gray-100 dark:bg-gray-950': index % 2 != 0 }"
                                 >
-                                    <div class="flex flex-col gap-2">
+                                    <div
+                                        class="flex min-w-0 flex-col gap-2"
+                                        style="overflow-wrap: anywhere"
+                                    >
                                         {!! view_render_event('admin.components.activities.content.activity.item.title.before') !!}
 
                                         <!-- Activity Title -->
