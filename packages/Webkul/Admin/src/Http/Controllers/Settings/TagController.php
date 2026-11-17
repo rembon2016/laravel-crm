@@ -151,7 +151,7 @@ class TagController extends Controller
             }
 
             return new JsonResponse([
-                'message' => trans('admin::app.customers.reviews.index.datagrid.mass-delete-success'),
+                'message' => trans('admin::app.settings.tags.index.delete-success'),
             ], 200);
         } catch (\Exception $e) {
             return new JsonResponse([
