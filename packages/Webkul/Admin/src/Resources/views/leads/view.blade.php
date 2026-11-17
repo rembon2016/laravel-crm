@@ -100,7 +100,7 @@
         {!! view_render_event('admin.leads.view.right.before', ['lead' => $lead]) !!}
 
         <!-- Right Panel -->
-        <div class="flex w-full flex-col gap-4 rounded-lg">
+        <div class="flex w-full min-w-0 flex-col gap-4 rounded-lg">
             <!-- Stages Navigation -->
             @include ('admin::leads.view.stages')
 
@@ -129,7 +129,10 @@
 
                 <!-- Description -->
                 <x-slot:description>
-                    <div class="p-4 dark:text-white">
+                    <div
+                        class="p-4 dark:text-white"
+                        style="overflow-wrap: anywhere"
+                    >
                         {{ $lead->description }}
                     </div>
                 </x-slot>
