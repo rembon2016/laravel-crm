@@ -1919,6 +1919,10 @@ return [
                 'won-value'      => 'قيمة الربح',
                 'lost-reason'    => 'سبب الخسارة',
                 'save-btn'       => 'حفظ',
+                'add-stage'            => 'إضافة مرحلة',
+                'name'                 => 'الاسم',
+                'probability'          => 'الاحتمالية (%)',
+                'stage-create-success' => 'تم إنشاء المرحلة بنجاح.',
             ],
             'tags' => [
                 'create-success'  => 'تم إنشاء العلامة بنجاح.',

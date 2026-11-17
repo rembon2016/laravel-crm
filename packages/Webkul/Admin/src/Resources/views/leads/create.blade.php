@@ -38,24 +38,6 @@
                 {!! view_render_event('admin.leads.create.save_button.after') !!}
             </div>
 
-            @if (request('stage_id'))
-                <input
-                    type="hidden"
-                    id="lead_pipeline_stage_id"
-                    name="lead_pipeline_stage_id"
-                    value="{{ request('stage_id') }}"
-                />
-            @endif
-
-            @if (request('pipeline_id'))
-                <input
-                    type="hidden"
-                    id="lead_pipeline_id"
-                    name="lead_pipeline_id"
-                    value="{{ request('pipeline_id') }}"
-                />
-            @endif
-
             <!-- Lead Create Component -->
             <v-lead-create>
                 <x-admin::shimmer.leads.datagrid />
@@ -168,6 +150,12 @@
                                     />
                                 </div>
                             </div>
+
+                            <!-- Pipeline and Stage -->
+                            @include('admin::leads.common.pipeline', [
+                                'pipelineId' => request('pipeline_id'),
+                                'stageId'    => request('stage_id'),
+                            ])
 
                             {!! view_render_event('admin.leads.create.details.attributes.after') !!}
                         </div>
