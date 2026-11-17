@@ -11,7 +11,7 @@
     >
         <!-- Person Search Lookup -->
         <x-admin::form.control-group>
-            <x-admin::form.control-group.label>
+            <x-admin::form.control-group.label class="required">
                 @lang('admin::app.leads.common.contact.name')
             </x-admin::form.control-group.label>
 
@@ -31,15 +31,15 @@
                 type="hidden"
                 name="person[name]"
                 v-model="person.name"
-                v-if="person.name"
+                rules="required"
             />
 
-            <x-admin::form.control-group.error control-name="person[id]" />
+            <x-admin::form.control-group.error control-name="person[name]" />
         </x-admin::form.control-group>
 
         <!-- Person Email -->
         <x-admin::form.control-group>
-            <x-admin::form.control-group.label>
+            <x-admin::form.control-group.label class="required">
                 @lang('admin::app.leads.common.contact.email')
             </x-admin::form.control-group.label>
 
@@ -47,7 +47,7 @@
 
             <v-email-component
                 :attribute="{'id': person?.id, 'code': 'person[emails]', 'name': 'Email'}"
-                validations=""
+                validations="required"
                 :value="person.emails"
                 :is-disabled="person?.id ? true : false"
             ></v-email-component>

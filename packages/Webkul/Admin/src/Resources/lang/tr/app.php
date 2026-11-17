@@ -1920,6 +1920,10 @@ return [
                 'won-value'      => 'Kazanan Değer',
                 'lost-reason'    => 'Kayıp Nedeni',
                 'save-btn'       => 'Kaydet',
+                'add-stage'            => 'Aşama Ekle',
+                'name'                 => 'Ad',
+                'probability'          => 'Olasılık (%)',
+                'stage-create-success' => 'Aşama başarıyla oluşturuldu.',
             ],
             'tags' => [
                 'create-success'  => 'Etiket başarıyla oluşturuldu.',

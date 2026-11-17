@@ -547,6 +547,7 @@ return [
                 'create-btn'               => 'Create Person',
                 'create-success'           => 'Person created successfully.',
                 'update-success'           => 'Person updated successfully.',
+                'delete-success'           => 'Person deleted successfully.',
                 'all-delete-success'       => 'All selected persons were deleted successfully.',
                 'partial-delete-warning'   => 'Some persons were deleted successfully. Others could not be deleted because they are linked to leads.',
                 'none-delete-warning'      => 'None of the selected persons could be deleted because they are linked to leads.',
@@ -1870,6 +1871,8 @@ return [
             'linked-lead'                => 'Linked Lead',
             'lead-details'               => 'Lead Details',
             'contact-person'             => 'Contact Person',
+            'contact-person-required'    => 'Contact person name is required. Please select an existing contact or enter a new contact person.',
+            'contact-email-required'     => 'Please enter a contact email.',
             'product'                    => 'Product',
 
             'tags' => [
@@ -2094,6 +2097,10 @@ return [
                 'won-value'      => 'Won Value',
                 'lost-reason'    => 'Lost Reason',
                 'save-btn'       => 'Save',
+                'add-stage'            => 'Add Stage',
+                'name'                 => 'Name',
+                'probability'          => 'Probability (%)',
+                'stage-create-success' => 'Stage created successfully.',
             ],
 
             'tags' => [

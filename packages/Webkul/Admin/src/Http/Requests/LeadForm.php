@@ -4,6 +4,7 @@ namespace Webkul\Admin\Http\Requests;
 
 use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 use Webkul\Attribute\Repositories\AttributeRepository;
 use Webkul\Attribute\Repositories\AttributeValueRepository;
 use Webkul\Core\Contracts\Validations\Decimal;
@@ -133,6 +134,17 @@ class LeadForm extends FormRequest
             'after:'.Carbon::yesterday()->format('Y-m-d'),
         ];
 
+        $this->rules['lead_pipeline_id'] = [
+            'required',
+            'exists:lead_pipelines,id',
+        ];
+
+        $this->rules['lead_pipeline_stage_id'] = [
+            'required',
+            Rule::exists('lead_pipeline_stages', 'id')
+                ->where('lead_pipeline_id', $this->input('lead_pipeline_id')),
+        ];
+
         return [
             ...$this->rules,
             'products'              => 'array',
@@ -140,6 +152,8 @@ class LeadForm extends FormRequest
             'products.*.name'       => 'required_with:products.*.product_id',
             'products.*.price'      => 'required_with:products.*.product_id',
             'products.*.quantity'   => 'required_with:products.*.product_id',
+            'person.name'           => 'required|string|max:255',
+            'person.emails.*.value' => 'required',
         ];
     }
 
@@ -149,9 +163,11 @@ class LeadForm extends FormRequest
     public function messages(): array
     {
         return [
-            'products.*.product_id.exists'      => trans('admin::app.leads.selected-product-not-exist'),
-            'products.*.name.required_with'     => trans('admin::app.leads.product-name-required'),
-            'products.*.price.required_with'    => trans('admin::app.leads.product-price-required'),
+            'person.name.required'          => trans('admin::app.leads.contact-person-required'),
+            'person.emails.*.value.required' => trans('admin::app.leads.contact-email-required'),
+            'products.*.product_id.exists'  => trans('admin::app.leads.selected-product-not-exist'),
+            'products.*.name.required_with' => trans('admin::app.leads.product-name-required'),
+            'products.*.price.required_with' => trans('admin::app.leads.product-price-required'),
             'products.*.quantity.required_with' => trans('admin::app.leads.product-quantity-required'),
         ];
     }

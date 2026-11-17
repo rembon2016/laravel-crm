@@ -1919,6 +1919,10 @@ return [
                 'won-value'      => 'Valor Ganhado',
                 'lost-reason'    => 'Motivo da Perda',
                 'save-btn'       => 'Salvar',
+                'add-stage'            => 'Adicionar Etapa',
+                'name'                 => 'Nome',
+                'probability'          => 'Probabilidade (%)',
+                'stage-create-success' => 'Etapa criada com sucesso.',
             ],
             'tags' => [
                 'create-success'  => 'Tag adicionada com sucesso.',

@@ -280,7 +280,11 @@
 
                 data() {
                     return {
-                        stages: @json($pipeline->stages),
+                        stages: @json(
+                            $pipeline->stages
+                                ->sortBy(fn ($stage) => in_array($stage->code, ['won', 'lost']) ? 1 : 0)
+                                ->values()
+                        ),
 
                         stageCount: 1,
                     };

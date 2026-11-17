@@ -1917,6 +1917,10 @@ return [
                 'won-value'      => 'ارزش برد',
                 'lost-reason'    => 'دلیل باخت',
                 'save-btn'       => 'ذخیره',
+                'add-stage'            => 'افزودن مرحله',
+                'name'                 => 'نام',
+                'probability'          => 'احتمال (%)',
+                'stage-create-success' => 'مرحله با موفقیت ایجاد شد.',
             ],
             'tags' => [
                 'create-success'  => 'برچسب با موفقیت ایجاد شد.',
