@@ -140,6 +140,8 @@ class LeadForm extends FormRequest
             'products.*.name'       => 'required_with:products.*.product_id',
             'products.*.price'      => 'required_with:products.*.product_id',
             'products.*.quantity'   => 'required_with:products.*.product_id',
+            'person.name'           => 'required|string|max:255',
+            'person.emails.*.value' => 'required',
         ];
     }
 
@@ -149,9 +151,11 @@ class LeadForm extends FormRequest
     public function messages(): array
     {
         return [
-            'products.*.product_id.exists'      => trans('admin::app.leads.selected-product-not-exist'),
-            'products.*.name.required_with'     => trans('admin::app.leads.product-name-required'),
-            'products.*.price.required_with'    => trans('admin::app.leads.product-price-required'),
+            'person.name.required'          => trans('admin::app.leads.contact-person-required'),
+            'person.emails.*.value.required' => trans('admin::app.leads.contact-email-required'),
+            'products.*.product_id.exists'  => trans('admin::app.leads.selected-product-not-exist'),
+            'products.*.name.required_with' => trans('admin::app.leads.product-name-required'),
+            'products.*.price.required_with' => trans('admin::app.leads.product-price-required'),
             'products.*.quantity.required_with' => trans('admin::app.leads.product-quantity-required'),
         ];
     }

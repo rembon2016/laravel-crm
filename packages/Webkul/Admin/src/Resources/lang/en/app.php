@@ -1870,6 +1870,8 @@ return [
             'linked-lead'                => 'Linked Lead',
             'lead-details'               => 'Lead Details',
             'contact-person'             => 'Contact Person',
+            'contact-person-required'    => 'Contact person name is required. Please select an existing contact or enter a new contact person.',
+            'contact-email-required'     => 'Please enter a contact email.',
             'product'                    => 'Product',
 
             'tags' => [
