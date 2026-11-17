@@ -31,10 +31,10 @@
                 type="hidden"
                 name="person[name]"
                 v-model="person.name"
-                v-if="person.name"
+                rules="required"
             />
 
-            <x-admin::form.control-group.error control-name="person[id]" />
+            <x-admin::form.control-group.error control-name="person[name]" />
         </x-admin::form.control-group>
 
         <!-- Person Email -->
@@ -47,7 +47,7 @@
 
             <v-email-component
                 :attribute="{'id': person?.id, 'code': 'person[emails]', 'name': 'Email'}"
-                validations=""
+                validations="required"
                 :value="person.emails"
                 :is-disabled="person?.id ? true : false"
             ></v-email-component>
