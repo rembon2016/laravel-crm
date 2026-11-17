@@ -11,7 +11,7 @@
     >
         <!-- Person Search Lookup -->
         <x-admin::form.control-group>
-            <x-admin::form.control-group.label>
+            <x-admin::form.control-group.label class="required">
                 @lang('admin::app.leads.common.contact.name')
             </x-admin::form.control-group.label>
 
@@ -39,7 +39,7 @@
 
         <!-- Person Email -->
         <x-admin::form.control-group>
-            <x-admin::form.control-group.label>
+            <x-admin::form.control-group.label class="required">
                 @lang('admin::app.leads.common.contact.email')
             </x-admin::form.control-group.label>
 
