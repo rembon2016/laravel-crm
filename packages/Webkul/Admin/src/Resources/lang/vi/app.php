@@ -1919,6 +1919,10 @@ return [
                 'won-value'      => 'Giá Trị Thắng',
                 'lost-reason'    => 'Lý Do Thua',
                 'save-btn'       => 'Lưu',
+                'add-stage'            => 'Thêm Giai Đoạn',
+                'name'                 => 'Tên',
+                'probability'          => 'Xác Suất (%)',
+                'stage-create-success' => 'Tạo giai đoạn thành công.',
             ],
             'tags' => [
                 'create-success'  => 'Tạo thẻ thành công.',

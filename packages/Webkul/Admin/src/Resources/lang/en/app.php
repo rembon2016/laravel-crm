@@ -2094,6 +2094,10 @@ return [
                 'won-value'      => 'Won Value',
                 'lost-reason'    => 'Lost Reason',
                 'save-btn'       => 'Save',
+                'add-stage'            => 'Add Stage',
+                'name'                 => 'Name',
+                'probability'          => 'Probability (%)',
+                'stage-create-success' => 'Stage created successfully.',
             ],
 
             'tags' => [

@@ -4,6 +4,7 @@ namespace Webkul\Admin\Http\Requests;
 
 use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 use Webkul\Attribute\Repositories\AttributeRepository;
 use Webkul\Attribute\Repositories\AttributeValueRepository;
 use Webkul\Core\Contracts\Validations\Decimal;
@@ -131,6 +132,17 @@ class LeadForm extends FormRequest
         $this->rules['expected_close_date'] = [
             'date_format:Y-m-d',
             'after:'.Carbon::yesterday()->format('Y-m-d'),
+        ];
+
+        $this->rules['lead_pipeline_id'] = [
+            'required',
+            'exists:lead_pipelines,id',
+        ];
+
+        $this->rules['lead_pipeline_stage_id'] = [
+            'required',
+            Rule::exists('lead_pipeline_stages', 'id')
+                ->where('lead_pipeline_id', $this->input('lead_pipeline_id')),
         ];
 
         return [

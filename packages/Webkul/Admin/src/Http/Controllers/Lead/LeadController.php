@@ -8,6 +8,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Webkul\Admin\DataGrids\Lead\LeadDataGrid;
@@ -270,7 +272,7 @@ class LeadController extends Controller
         if (request()->has('closed_at')) {
             return redirect()->back();
         } else {
-            return redirect()->route('admin.leads.index', $data['lead_pipeline_id']);
+            return redirect()->route('admin.leads.index', ['pipeline_id' => $data['lead_pipeline_id']]);
         }
     }
 
@@ -330,6 +332,80 @@ class LeadController extends Controller
 
         return response()->json([
             'message' => trans('admin::app.leads.update-success'),
+        ]);
+    }
+
+    /**
+     * Store a newly created stage in the lead's pipeline.
+     */
+    public function storeStage(): JsonResponse
+    {
+        if (! bouncer()->hasPermission('settings.lead.pipelines.edit')) {
+            abort(401, 'This action is unauthorized');
+        }
+
+        $data = request()->validate([
+            'lead_pipeline_id' => ['required', 'exists:lead_pipelines,id'],
+            'name'             => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('lead_pipeline_stages', 'name')
+                    ->where('lead_pipeline_id', request('lead_pipeline_id')),
+            ],
+            'probability'      => ['required', 'numeric', 'min:0', 'max:100'],
+        ], [
+            'name.unique' => trans('admin::app.settings.pipelines.create.duplicate-name'),
+        ]);
+
+        $pipeline = $this->pipelineRepository->findOrFail($data['lead_pipeline_id']);
+
+        $baseCode = Str::slug($data['name']) ?: 'stage';
+
+        $code = $baseCode;
+
+        $suffix = 2;
+
+        while ($pipeline->stages()->where('code', $code)->exists()) {
+            $code = $baseCode.'-'.$suffix++;
+        }
+
+        $sortOrder = ((int) $pipeline->stages()
+            ->whereNotIn('code', ['won', 'lost'])
+            ->max('sort_order')) + 1;
+
+        /**
+         * Keep the closing stages (Won and Lost) at the end of the pipeline.
+         */
+        $closingSortOrder = $sortOrder + 1;
+
+        $closingStages = $pipeline->stages()
+            ->whereIn('code', ['won', 'lost'])
+            ->orderBy('sort_order')
+            ->get();
+
+        foreach ($closingStages as $closingStage) {
+            $closingStage->update(['sort_order' => $closingSortOrder++]);
+        }
+
+        $stage = $this->stageRepository->create([
+            'lead_pipeline_id' => $pipeline->id,
+            'code'             => $code,
+            'name'             => $data['name'],
+            'probability'      => (int) $data['probability'],
+            'sort_order'       => $sortOrder,
+        ]);
+
+        return response()->json([
+            'message' => trans('admin::app.leads.view.stages.stage-create-success'),
+            'data'    => [
+                'id'               => $stage->id,
+                'code'             => $stage->code,
+                'name'             => $stage->name,
+                'probability'      => $stage->probability,
+                'sort_order'       => $stage->sort_order,
+                'lead_pipeline_id' => $stage->lead_pipeline_id,
+            ],
         ]);
     }
 
