@@ -4,15 +4,17 @@ return [
     'seeders' => [
         'attributes' => [
             'leads' => [
-                'description'         => 'Mô tả',
-                'expected-close-date' => 'Ngày dự kiến đóng',
-                'lead-value'          => 'Giá trị cơ hội',
-                'sales-owner'         => 'Chủ sở hữu bán hàng',
-                'source'              => 'Nguồn',
-                'title'               => 'Tiêu đề',
-                'type'                => 'Loại',
-                'pipeline'            => 'Kênh bán hàng',
-                'stage'               => 'Giai đoạn',
+                'description'              => 'Mô tả',
+                'estimated-arrival'        => 'Ngày dự kiến đến',
+                'estimated-departure'      => 'Ngày dự kiến khởi hành',
+                'expected-close-date'      => 'Ngày dự kiến đóng',
+                'lead-value'               => 'Giá trị cơ hội',
+                'sales-owner'              => 'Chủ sở hữu bán hàng',
+                'source'                   => 'Nguồn',
+                'title'                    => 'Tiêu đề',
+                'type'                     => 'Loại',
+                'pipeline'                 => 'Kênh bán hàng',
+                'stage'                    => 'Giai đoạn',
             ],
 
             'persons' => [

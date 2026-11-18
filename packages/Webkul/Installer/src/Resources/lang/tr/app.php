@@ -4,15 +4,17 @@ return [
     'seeders' => [
         'attributes' => [
             'leads' => [
-                'description'         => 'Açıklama',
-                'expected-close-date' => 'Beklenen Kapanış Tarihi',
-                'lead-value'          => 'Potansiyel Değeri',
-                'sales-owner'         => 'Satış Sahibi',
-                'source'              => 'Kaynak',
-                'title'               => 'Başlık',
-                'type'                => 'Tür',
-                'pipeline'            => 'Pipeline',
-                'stage'               => 'Aşama',
+                'description'              => 'Açıklama',
+                'estimated-arrival'        => 'Tahmini Varış Tarihi',
+                'estimated-departure'      => 'Tahmini Çıkış Tarihi',
+                'expected-close-date'      => 'Beklenen Kapanış Tarihi',
+                'lead-value'               => 'Potansiyel Değeri',
+                'sales-owner'              => 'Satış Sahibi',
+                'source'                   => 'Kaynak',
+                'title'                    => 'Başlık',
+                'type'                     => 'Tür',
+                'pipeline'                 => 'Pipeline',
+                'stage'                    => 'Aşama',
             ],
 
             'persons' => [

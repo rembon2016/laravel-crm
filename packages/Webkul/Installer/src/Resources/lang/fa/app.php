@@ -4,15 +4,17 @@ return [
     'seeders' => [
         'attributes' => [
             'leads' => [
-                'description'         => 'توضیحات',
-                'expected-close-date' => 'تاریخ بسته شدن مورد انتظار',
-                'lead-value'          => 'ارزش سرنخ',
-                'sales-owner'         => 'مالک فروش',
-                'source'              => 'منبع',
-                'title'               => 'عنوان',
-                'type'                => 'نوع',
-                'pipeline'            => 'پایپ لاین',
-                'stage'               => 'مرحله',
+                'description'              => 'توضیحات',
+                'estimated-arrival'        => 'تاریخ تخمینی رسیدن کالا',
+                'estimated-departure'      => 'تاریخ تخمینی خروج کالا',
+                'expected-close-date'      => 'تاریخ بسته شدن مورد انتظار',
+                'lead-value'               => 'ارزش سرنخ',
+                'sales-owner'              => 'مالک فروش',
+                'source'                   => 'منبع',
+                'title'                    => 'عنوان',
+                'type'                     => 'نوع',
+                'pipeline'                 => 'پایپ لاین',
+                'stage'                    => 'مرحله',
             ],
 
             'persons' => [

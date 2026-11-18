@@ -104,7 +104,7 @@
                             <!-- Lead Details Title and Description -->
                             <x-admin::attributes
                                 :custom-attributes="app('Webkul\Attribute\Repositories\AttributeRepository')->findWhere([
-                                    ['code', 'NOTIN', ['lead_value', 'lead_type_id', 'lead_source_id', 'expected_close_date', 'user_id', 'lead_pipeline_id', 'lead_pipeline_stage_id']],
+                                    ['code', 'NOTIN', ['lead_value', 'lead_type_id', 'lead_source_id', 'expected_close_date', 'user_id', 'estimated_departure_date', 'estimated_arrival_date', 'lead_pipeline_id', 'lead_pipeline_stage_id']],
                                     'entity_type' => 'leads',
                                     'quick_add'   => 1
                                 ])"
@@ -147,6 +147,29 @@
                                                 'after:' .  \Carbon\Carbon::yesterday()->format('Y-m-d')
                                             ],
                                         ]"
+                                    />
+                                </div>
+                            </div>
+
+                            <!-- Estimated Shipment Dates -->
+                            <div class="flex gap-4 max-sm:flex-wrap">
+                                <div class="w-full">
+                                    <x-admin::attributes
+                                        :custom-attributes="app('Webkul\Attribute\Repositories\AttributeRepository')->findWhere([
+                                            ['code', 'IN', ['estimated_departure_date']],
+                                            'entity_type' => 'leads',
+                                            'quick_add'   => 1
+                                        ])"
+                                    />
+                                </div>
+
+                                <div class="w-full">
+                                    <x-admin::attributes
+                                        :custom-attributes="app('Webkul\Attribute\Repositories\AttributeRepository')->findWhere([
+                                            ['code', 'IN', ['estimated_arrival_date']],
+                                            'entity_type' => 'leads',
+                                            'quick_add'   => 1
+                                        ])"
                                     />
                                 </div>
                             </div>

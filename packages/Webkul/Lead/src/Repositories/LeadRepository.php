@@ -143,9 +143,19 @@ class LeadRepository extends Repository
 
         if (isset($data['products'])) {
             foreach ($data['products'] as $product) {
+                if (empty($product['product_id'])) {
+                    continue;
+                }
+
+                $price = (float) ($product['price'] ?? 0);
+
+                $quantity = (float) ($product['quantity'] ?? 0);
+
                 $this->productRepository->create(array_merge($product, [
-                    'lead_id' => $lead->id,
-                    'amount'  => $product['price'] * $product['quantity'],
+                    'lead_id'  => $lead->id,
+                    'price'    => $price,
+                    'quantity' => $quantity,
+                    'amount'   => $price * $quantity,
                 ]));
             }
         }
@@ -232,17 +242,33 @@ class LeadRepository extends Repository
 
         if (isset($data['products'])) {
             foreach ($data['products'] as $productId => $productInputs) {
+                if (empty($productInputs['product_id'])) {
+                    continue;
+                }
+
+                $price = (float) ($productInputs['price'] ?? 0);
+
+                $quantity = (float) ($productInputs['quantity'] ?? 0);
+
+                $values = array_merge($productInputs, [
+                    'price'    => $price,
+                    'quantity' => $quantity,
+                    'amount'   => $price * $quantity,
+                ]);
+
                 if (Str::contains($productId, 'product_')) {
                     $this->productRepository->create(array_merge([
                         'lead_id' => $lead->id,
-                    ], $productInputs));
-                } else {
-                    if (is_numeric($index = $previousProductIds->search($productId))) {
-                        $previousProductIds->forget($index);
-                    }
+                    ], $values));
 
-                    $this->productRepository->update($productInputs, $productId);
+                    continue;
                 }
+
+                if (is_numeric($index = $previousProductIds->search($productId))) {
+                    $previousProductIds->forget($index);
+                }
+
+                $this->productRepository->update($values, $productId);
             }
         }
 
