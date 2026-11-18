@@ -4,15 +4,17 @@ return [
     'seeders' => [
         'attributes' => [
             'leads' => [
-                'description'         => 'الوصف',
-                'expected-close-date' => 'تاريخ الإغلاق المتوقع',
-                'lead-value'          => 'قيمة العميل المحتمل',
-                'sales-owner'         => 'مالك المبيعات',
-                'source'              => 'المصدر',
-                'title'               => 'العنوان',
-                'type'                => 'النوع',
-                'pipeline'            => 'قناة المبيعات',
-                'stage'               => 'المرحلة',
+                'description'              => 'الوصف',
+                'estimated-arrival'        => 'تاريخ وصول البضاعة المتوقع',
+                'estimated-departure'      => 'تاريخ مغادرة البضاعة المتوقع',
+                'expected-close-date'      => 'تاريخ الإغلاق المتوقع',
+                'lead-value'               => 'قيمة العميل المحتمل',
+                'sales-owner'              => 'مالك المبيعات',
+                'source'                   => 'المصدر',
+                'title'                    => 'العنوان',
+                'type'                     => 'النوع',
+                'pipeline'                 => 'قناة المبيعات',
+                'stage'                    => 'المرحلة',
             ],
 
             'persons' => [

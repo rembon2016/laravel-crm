@@ -4,15 +4,17 @@ return [
     'seeders' => [
         'attributes' => [
             'leads' => [
-                'description'         => 'Descrição',
-                'expected-close-date' => 'Data de Fechamento Esperada',
-                'lead-value'          => 'Valor da Oportunidade',
-                'sales-owner'         => 'Responsável pela Venda',
-                'source'              => 'Origem',
-                'title'               => 'Título',
-                'type'                => 'Tipo',
-                'pipeline'            => 'Funil',
-                'stage'               => 'Estágio',
+                'description'              => 'Descrição',
+                'estimated-arrival'        => 'Data Estimada de Chegada',
+                'estimated-departure'      => 'Data Estimada de Saída',
+                'expected-close-date'      => 'Data de Fechamento Esperada',
+                'lead-value'               => 'Valor da Oportunidade',
+                'sales-owner'              => 'Responsável pela Venda',
+                'source'                   => 'Origem',
+                'title'                    => 'Título',
+                'type'                     => 'Tipo',
+                'pipeline'                 => 'Funil',
+                'stage'                    => 'Estágio',
             ],
 
             'persons' => [
