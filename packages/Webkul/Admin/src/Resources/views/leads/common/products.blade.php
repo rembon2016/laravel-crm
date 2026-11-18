@@ -93,6 +93,7 @@
                         ::src="src"
                         ::name="`${inputName}[name]`"
                         :preload="true"
+                        ::value="{ id: product.product_id, name: product.name }"
                         :placeholder="trans('admin::app.leads.common.products.product-name')"
                         @on-selected="(product) => addProduct(product)"
                     />
